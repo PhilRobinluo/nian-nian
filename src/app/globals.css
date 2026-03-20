@@ -48,73 +48,45 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* 念念温暖复古主题 */
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  /* 暖棕色系 */
+  --background: #F9F3E8;          /* 米白底色 */
+  --foreground: #3E2723;          /* 深棕文字 */
+  --card: #FDF6E8;                /* 卡片米白 */
+  --card-foreground: #3E2723;
+  --popover: #FDF6E8;
+  --popover-foreground: #3E2723;
+  --primary: #8B6914;             /* 金棕 accent */
+  --primary-foreground: #FDF6E8;
+  --secondary: #EDD9B0;           /* 浅暖棕 */
+  --secondary-foreground: #5D3A1A;
+  --muted: #EDD9B0;
+  --muted-foreground: #795548;
+  --accent: #C8956C;              /* 暖橙棕 */
+  --accent-foreground: #FDF6E8;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
+  --border: #D4B483;              /* 金棕边框 */
+  --input: #EDD9B0;
+  --ring: #8B6914;
+  --radius: 0.75rem;
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  /* 图表颜色 */
+  --chart-1: #8B6914;
+  --chart-2: #C8956C;
+  --chart-3: #D4B483;
+  --chart-4: #795548;
+  --chart-5: #5D3A1A;
+
+  /* sidebar */
+  --sidebar: #F0E6D0;
+  --sidebar-foreground: #3E2723;
+  --sidebar-primary: #8B6914;
+  --sidebar-primary-foreground: #FDF6E8;
+  --sidebar-accent: #EDD9B0;
+  --sidebar-accent-foreground: #3E2723;
+  --sidebar-border: #D4B483;
+  --sidebar-ring: #8B6914;
 }
 
 @layer base {
@@ -123,8 +95,44 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-size: 18px;
+    line-height: 1.7;
   }
   html {
     @apply font-sans;
   }
+}
+
+/* 回忆录阅读字体 */
+.memoir-font {
+  font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", Georgia, serif;
+  line-height: 2;
+  letter-spacing: 0.05em;
+}
+
+/* 纸质纹理背景 */
+.paper-texture {
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* 适老化：确保触摸目标最小 44px */
+button, a, [role="button"] {
+  min-height: 44px;
+}
+
+/* 聊天气泡动画 */
+@keyframes bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bubble-animate {
+  animation: bubble-in 0.25s ease-out;
 }

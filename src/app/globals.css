@@ -48,45 +48,73 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* 念念温暖复古主题 */
 :root {
-  /* 暖棕色系 */
-  --background: #F9F3E8;          /* 米白底色 */
-  --foreground: #3E2723;          /* 深棕文字 */
-  --card: #FDF6E8;                /* 卡片米白 */
-  --card-foreground: #3E2723;
-  --popover: #FDF6E8;
-  --popover-foreground: #3E2723;
-  --primary: #8B6914;             /* 金棕 accent */
-  --primary-foreground: #FDF6E8;
-  --secondary: #EDD9B0;           /* 浅暖棕 */
-  --secondary-foreground: #5D3A1A;
-  --muted: #EDD9B0;
-  --muted-foreground: #795548;
-  --accent: #C8956C;              /* 暖橙棕 */
-  --accent-foreground: #FDF6E8;
+  --background: oklch(0.99 0.005 85);       /* 米白，像旧信纸 #FFFDF5 */
+  --foreground: oklch(0.205 0.015 60);      /* 深棕黑 #1A1610 */
+  --card: oklch(0.985 0.008 80);            /* 暖白卡片 #FDF9F0 */
+  --card-foreground: oklch(0.205 0.015 60);
+  --popover: oklch(0.985 0.008 80);
+  --popover-foreground: oklch(0.205 0.015 60);
+  --primary: oklch(0.65 0.14 55);           /* 琥珀棕主色 #B5722A */
+  --primary-foreground: oklch(0.99 0.005 85);
+  --secondary: oklch(0.94 0.02 80);         /* 浅暖灰 #EDE6D8 */
+  --secondary-foreground: oklch(0.30 0.02 60);
+  --muted: oklch(0.95 0.015 80);
+  --muted-foreground: oklch(0.50 0.02 60);
+  --accent: oklch(0.88 0.06 75);            /* 淡琥珀 #D4B896 */
+  --accent-foreground: oklch(0.25 0.02 60);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #D4B483;              /* 金棕边框 */
-  --input: #EDD9B0;
-  --ring: #8B6914;
+  --border: oklch(0.90 0.02 80);
+  --input: oklch(0.92 0.015 80);
+  --ring: oklch(0.65 0.14 55);
+  --chart-1: oklch(0.65 0.14 55);           /* 琥珀 */
+  --chart-2: oklch(0.72 0.10 75);           /* 暖金 */
+  --chart-3: oklch(0.55 0.12 40);           /* 赭石 */
+  --chart-4: oklch(0.80 0.06 85);           /* 淡黄 */
+  --chart-5: oklch(0.45 0.08 50);           /* 深棕 */
   --radius: 0.75rem;
+  --sidebar: oklch(0.985 0.008 80);
+  --sidebar-foreground: oklch(0.205 0.015 60);
+  --sidebar-primary: oklch(0.65 0.14 55);
+  --sidebar-primary-foreground: oklch(0.99 0.005 85);
+  --sidebar-accent: oklch(0.94 0.02 80);
+  --sidebar-accent-foreground: oklch(0.30 0.02 60);
+  --sidebar-border: oklch(0.90 0.02 80);
+  --sidebar-ring: oklch(0.65 0.14 55);
+}
 
-  /* 图表颜色 */
-  --chart-1: #8B6914;
-  --chart-2: #C8956C;
-  --chart-3: #D4B483;
-  --chart-4: #795548;
-  --chart-5: #5D3A1A;
-
-  /* sidebar */
-  --sidebar: #F0E6D0;
-  --sidebar-foreground: #3E2723;
-  --sidebar-primary: #8B6914;
-  --sidebar-primary-foreground: #FDF6E8;
-  --sidebar-accent: #EDD9B0;
-  --sidebar-accent-foreground: #3E2723;
-  --sidebar-border: #D4B483;
-  --sidebar-ring: #8B6914;
+.dark {
+  --background: oklch(0.18 0.01 60);        /* 深暖棕 */
+  --foreground: oklch(0.93 0.01 80);        /* 暖白 */
+  --card: oklch(0.22 0.015 55);             /* 深棕卡片 */
+  --card-foreground: oklch(0.93 0.01 80);
+  --popover: oklch(0.22 0.015 55);
+  --popover-foreground: oklch(0.93 0.01 80);
+  --primary: oklch(0.72 0.12 60);           /* 亮琥珀 */
+  --primary-foreground: oklch(0.18 0.01 60);
+  --secondary: oklch(0.28 0.015 55);
+  --secondary-foreground: oklch(0.93 0.01 80);
+  --muted: oklch(0.28 0.015 55);
+  --muted-foreground: oklch(0.65 0.02 70);
+  --accent: oklch(0.35 0.03 55);
+  --accent-foreground: oklch(0.93 0.01 80);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(0.30 0.015 55);
+  --input: oklch(0.30 0.015 55);
+  --ring: oklch(0.72 0.12 60);
+  --chart-1: oklch(0.72 0.12 60);
+  --chart-2: oklch(0.78 0.10 75);
+  --chart-3: oklch(0.60 0.10 40);
+  --chart-4: oklch(0.85 0.06 85);
+  --chart-5: oklch(0.50 0.08 50);
+  --sidebar: oklch(0.22 0.015 55);
+  --sidebar-foreground: oklch(0.93 0.01 80);
+  --sidebar-primary: oklch(0.72 0.12 60);
+  --sidebar-primary-foreground: oklch(0.18 0.01 60);
+  --sidebar-accent: oklch(0.28 0.015 55);
+  --sidebar-accent-foreground: oklch(0.93 0.01 80);
+  --sidebar-border: oklch(0.30 0.015 55);
+  --sidebar-ring: oklch(0.72 0.12 60);
 }
 
 @layer base {
@@ -96,66 +124,135 @@
   body {
     @apply bg-background text-foreground;
     font-size: 18px;
-    line-height: 1.7;
+    line-height: 1.65;
   }
   html {
     @apply font-sans;
   }
 }
 
-/* 回忆录阅读字体 */
-.memoir-font {
-  font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", Georgia, serif;
-  line-height: 2;
-  letter-spacing: 0.05em;
-}
-
-/* 纸质纹理背景 */
-.paper-texture {
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-}
-
-/* 适老化：确保触摸目标最小 44px */
-button, a, [role="button"] {
-  min-height: 44px;
-}
-
-/* 聊天气泡动画 */
-@keyframes bubble-in {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
+/* ── Print / PDF export styles ─────────────────────────────────────────── */
+@media print {
+  /* Hide all non-content UI */
+  .no-print,
+  header.no-print,
+  .no-print * {
+    display: none !important;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  /* Page setup: A4 with binding-friendly margins */
+  @page {
+    size: A4;
+    margin: 2.5cm 2cm 2.5cm 2.8cm; /* top right bottom left (left wider for binding) */
   }
-}
 
-.bubble-animate {
-  animation: bubble-in 0.25s ease-out;
-}
-
-/* 横向滚动容器隐藏滚动条 */
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-/* 语音按钮录音中脉冲动画 */
-@keyframes voice-pulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  @page :first {
+    margin-top: 0;
+    margin-bottom: 0;
   }
-  50% {
-    box-shadow: 0 0 0 12px rgba(239, 68, 68, 0);
-  }
-}
 
-.voice-pulse {
-  animation: voice-pulse 1.2s ease-in-out infinite;
+  /* Full-width book content */
+  #book-content {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Cover occupies its own page */
+  .book-cover {
+    page-break-after: always;
+    break-after: page;
+    min-height: 100vh !important;
+    background: #FDF8F0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Table of contents occupies its own page */
+  .book-toc {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  /* Each chapter starts on a new page */
+  .chapter-break {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  /* Colophon on its own page */
+  .colophon {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  /* Typography for print */
+  body {
+    font-size: 12pt !important;
+    line-height: 1.8 !important;
+    color: #1a1610 !important;
+    background: #fff !important;
+  }
+
+  /* Book paragraphs */
+  .book-paragraph {
+    font-size: 12pt !important;
+    line-height: 1.85 !important;
+    text-indent: 2em !important;
+    font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif !important;
+  }
+
+  /* Avoid breaking paragraphs mid-page */
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Keep headings with their following content */
+  h1, h2, h3, h4, header {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Remove box shadows and unnecessary decorations */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Simplify backgrounds */
+  .bg-card,
+  .bg-amber-50\/60,
+  .bg-amber-50 {
+    background: transparent !important;
+  }
+
+  /* Keep amber accent colors readable in print */
+  .text-amber-500,
+  .text-amber-600,
+  .text-amber-700,
+  .text-amber-900 {
+    color: #92400e !important;
+  }
+
+  /* Hide URL decoration from links */
+  a[href]::after {
+    content: none !important;
+  }
+
+  /* Ensure serif font throughout for book feel */
+  #book-content {
+    font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif !important;
+  }
+
+  /* Chapter titles in print */
+  #book-content h2 {
+    font-family: 'Noto Serif SC', 'Songti SC', serif !important;
+    font-size: 18pt !important;
+  }
+
+  #book-content h3 {
+    font-family: 'Noto Serif SC', 'Songti SC', serif !important;
+    font-size: 14pt !important;
+  }
 }

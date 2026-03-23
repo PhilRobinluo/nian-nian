@@ -233,6 +233,51 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* ── 情感区域 ── */}
+        <section
+          className="px-6 py-24"
+          style={{ background: "linear-gradient(to bottom, oklch(0.96 0.015 80), oklch(0.99 0.005 85))" }}
+          aria-label="情感共鸣"
+        >
+          <div className="mx-auto max-w-3xl">
+            <div className="text-center mb-16">
+              <p className="text-lg text-primary font-medium mb-4">老人念叨过去，子女念念不忘</p>
+              <h2 className="text-2xl md:text-3xl font-bold leading-snug text-foreground/90 mb-8">
+                每个人内心都有记录与溯源的渴望
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                我从哪来，经历过什么，活成了什么样的人。<br className="hidden sm:block" />
+                我走后还能给这个世界留下什么。
+              </p>
+            </div>
+
+            <div className="relative mb-16">
+              <span className="pointer-events-none absolute -top-8 -left-4 text-8xl font-serif text-primary/15 leading-none select-none" aria-hidden="true">&ldquo;</span>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-amber-100 text-center">
+                  <p className="text-muted-foreground text-sm mb-2">对老人来说</p>
+                  <p className="text-xl font-semibold text-foreground/85 leading-relaxed">是带着故事离开的遗憾</p>
+                </div>
+                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-amber-100 text-center">
+                  <p className="text-muted-foreground text-sm mb-2">对子女来说</p>
+                  <p className="text-xl font-semibold text-foreground/85 leading-relaxed">是再也问不出口的遗憾</p>
+                </div>
+              </div>
+              <span className="pointer-events-none absolute -bottom-8 -right-4 text-8xl font-serif text-primary/15 leading-none select-none" aria-hidden="true">&rdquo;</span>
+            </div>
+
+            <div className="text-center space-y-4">
+              <p className="text-lg text-foreground/80 font-medium">念念想做的事很简单——</p>
+              <div className="flex flex-col gap-3 items-start max-w-md mx-auto text-left">
+                <p className="text-lg text-muted-foreground"><span className="text-primary mr-2">·</span>用对话的方式，陪老人聊过去</p>
+                <p className="text-lg text-muted-foreground"><span className="text-primary mr-2">·</span>AI 自动引导提问、整理、排版</p>
+                <p className="text-lg text-muted-foreground"><span className="text-primary mr-2">·</span>最终生成一本属于 TA 的人生回忆录</p>
+              </div>
+              <p className="text-base text-muted-foreground/70 pt-4">在还来得及的时候，把故事留下来。</p>
+            </div>
+          </div>
+        </section>
+
         {/* ── 成品展示 ── */}
         <section className="px-6 py-20 bg-gradient-to-b from-background to-secondary/20" aria-label="成品展示">
           <div className="mx-auto max-w-5xl text-center">
@@ -329,70 +374,6 @@ export default function HomePage() {
                   )}
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── 情感区域 ── */}
-        <section
-          className="px-6 py-24"
-          style={{ background: "linear-gradient(to bottom, oklch(0.96 0.015 80), oklch(0.99 0.005 85))" }}
-          aria-label="情感共鸣"
-        >
-          <div className="mx-auto max-w-3xl">
-            {/* 核心文案 */}
-            <div className="text-center mb-16">
-              <p className="text-lg text-primary font-medium mb-4">老人念叨过去，子女念念不忘</p>
-              <h2 className="text-2xl md:text-3xl font-bold leading-snug text-foreground/90 mb-8">
-                每个人内心都有记录与溯源的渴望
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                我从哪来，经历过什么，活成了什么样的人。<br className="hidden sm:block" />
-                我走后还能给这个世界留下什么。
-              </p>
-            </div>
-
-            {/* 遗憾对比 */}
-            <div className="relative mb-16">
-              <span
-                className="pointer-events-none absolute -top-8 -left-4 text-8xl font-serif text-primary/15 leading-none select-none"
-                aria-hidden="true"
-              >
-                &ldquo;
-              </span>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-amber-100 text-center">
-                  <p className="text-muted-foreground text-sm mb-2">对老人来说</p>
-                  <p className="text-xl font-semibold text-foreground/85 leading-relaxed">
-                    是带着故事离开的遗憾
-                  </p>
-                </div>
-                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-amber-100 text-center">
-                  <p className="text-muted-foreground text-sm mb-2">对子女来说</p>
-                  <p className="text-xl font-semibold text-foreground/85 leading-relaxed">
-                    是再也问不出口的遗憾
-                  </p>
-                </div>
-              </div>
-              <span
-                className="pointer-events-none absolute -bottom-8 -right-4 text-8xl font-serif text-primary/15 leading-none select-none"
-                aria-hidden="true"
-              >
-                &rdquo;
-              </span>
-            </div>
-
-            {/* 我们的方案 */}
-            <div className="text-center space-y-4">
-              <p className="text-lg text-foreground/80 font-medium">念念想做的事很简单——</p>
-              <div className="flex flex-col gap-3 items-start max-w-md mx-auto text-left">
-                <p className="text-lg text-muted-foreground"><span className="text-primary mr-2">·</span>用对话的方式，陪老人聊过去</p>
-                <p className="text-lg text-muted-foreground"><span className="text-primary mr-2">·</span>AI 自动引导提问、整理、排版</p>
-                <p className="text-lg text-muted-foreground"><span className="text-primary mr-2">·</span>最终生成一本属于 TA 的人生回忆录</p>
-              </div>
-              <p className="text-base text-muted-foreground/70 pt-4">
-                在还来得及的时候，把故事留下来。
-              </p>
             </div>
           </div>
         </section>

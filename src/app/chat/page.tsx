@@ -193,10 +193,35 @@ export default function ChatPage() {
     generateStoryFromConversation,
     isGenerating,
     currentProject,
+    conversations,
   } = useStory();
 
   const [currentConvId, setCurrentConvId] = useState<string | null>(null);
   const [currentPhase, setCurrentPhase] = useState<string>("童年时光");
+  // 历史消息（从 localStorage 恢复的对话记录）
+  const [historyMessages, setHistoryMessages] = useState<
+    { id: string; role: "user" | "assistant"; parts: { type: "text"; text: string }[] }[]
+  >([]);
+
+  // 恢复最近一次对话（有消息记录的）
+  useEffect(() => {
+    if (!conversations || conversations.length === 0) return;
+    if (currentConvId) return; // 已有活跃对话就不恢复
+    // 找到最近一个有消息的对话
+    const lastConv = [...conversations]
+      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+      .find((c) => c.messages.length > 0);
+    if (lastConv) {
+      setCurrentConvId(lastConv.id);
+      setCurrentPhase(lastConv.phase);
+      const restored = lastConv.messages.map((m, i) => ({
+        id: `history-${i}`,
+        role: m.role as "user" | "assistant",
+        parts: [{ type: "text" as const, text: m.content }],
+      }));
+      setHistoryMessages(restored);
+    }
+  }, [conversations, currentConvId]);
 
   // Auth guard: redirect to /auth if not logged in
   useEffect(() => {
@@ -368,7 +393,8 @@ export default function ChatPage() {
     );
   }
 
-  const allMessages = [WELCOME_MESSAGE, ...messages];
+  // 合并：欢迎消息 + 历史消息（从 localStorage 恢复）+ 新消息（useChat 实时）
+  const allMessages = [WELCOME_MESSAGE, ...historyMessages, ...messages];
 
   return (
     <div className="flex flex-col h-screen bg-stone-50">

@@ -233,6 +233,33 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* ── 成品展示 ── */}
+        <section className="px-6 py-20 bg-gradient-to-b from-background to-secondary/20" aria-label="成品展示">
+          <div className="mx-auto max-w-5xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl mb-4">
+              每个人的故事，都值得成为一本书
+            </h2>
+            <p className="text-muted-foreground text-lg mb-12 max-w-2xl mx-auto">
+              AI 帮您整理、排版，生成一本可以印刷的精装回忆录
+            </p>
+            <div className="relative max-w-3xl mx-auto">
+              <Image
+                src="/showcase.png"
+                alt="精美的人生回忆录精装书展示"
+                width={1200}
+                height={675}
+                className="rounded-2xl shadow-2xl border border-amber-200/40"
+                priority={false}
+              />
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-sm rounded-full px-6 py-2 shadow-md border border-amber-100">
+                <p className="text-sm text-muted-foreground font-medium">
+                  ✨ 这就是念念帮您生成的回忆录
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ── 价值卡片 ── */}
         <section
           id="values"

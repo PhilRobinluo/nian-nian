@@ -1,35 +1,19 @@
-import { generateText, Output } from "ai";
+import { generateText } from "ai";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
-import { z } from "zod";
 
 const openrouter = createOpenRouter({
   apiKey: process.env.OPENROUTER_API_KEY,
 });
 
-const storySchema = z.object({
-  title: z.string().describe("故事标题，简短有温度"),
-  content: z
-    .string()
-    .describe("完整的故事正文，800-2000字，以第一人称叙述"),
-  summary: z.string().describe("2-3句话的故事摘要"),
-  phase: z
-    .string()
-    .describe(
-      "人生阶段：童年时光/求学岁月/工作生涯/家庭生活/退休生活",
-    ),
-});
-
 export async function POST(req: Request) {
   const { messages, phase } = await req.json();
 
-  // 将对话内容拼接成原始文本
   const conversationText = (messages as { role: string; content: string }[])
     .map((m) => `${m.role === "user" ? "老人" : "念念"}：${m.content}`)
     .join("\n");
 
-  const result = await generateText({
+  const { text } = await generateText({
     model: openrouter("deepseek/deepseek-v3.2"),
-    output: Output.object({ schema: storySchema }),
     prompt: `你是一位资深的传记作家和口述历史整理者。请将以下对话整理成一个完整的故事章节。
 
 ## 要求
@@ -47,8 +31,31 @@ ${phase}
 ## 原始对话内容
 ${conversationText}
 
-请生成结构化的故事数据。`,
+## 输出格式
+请严格以 JSON 格式输出，不要有其他内容：
+{
+  "title": "故事标题",
+  "content": "完整故事正文（800-2000字，第一人称）",
+  "summary": "2-3句话摘要",
+  "phase": "${phase}"
+}`,
   });
 
-  return Response.json(result.output);
+  try {
+    // 提取 JSON（处理可能的 markdown 代码块包裹）
+    let jsonStr = text.trim();
+    if (jsonStr.startsWith("```")) {
+      jsonStr = jsonStr.replace(/^```(?:json)?\n?/, "").replace(/\n?```$/, "");
+    }
+    const data = JSON.parse(jsonStr);
+    return Response.json(data);
+  } catch {
+    // 解析失败时返回原文作为故事内容
+    return Response.json({
+      title: "未命名故事",
+      content: text,
+      summary: text.slice(0, 100),
+      phase: phase,
+    });
+  }
 }

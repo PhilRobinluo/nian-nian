@@ -1,9 +1,19 @@
-import { createOpenRouter } from "@openrouter/ai-sdk-provider";
-import { generateText } from "ai";
+import * as tencentcloud from "tencentcloud-sdk-nodejs-asr";
 
-const openrouter = createOpenRouter({
-  apiKey: process.env.OPENROUTER_API_KEY,
+const AsrClient = tencentcloud.asr.v20190614.Client;
+
+const client = new AsrClient({
+  credential: {
+    secretId: process.env.TENCENT_SECRET_ID!,
+    secretKey: process.env.TENCENT_SECRET_KEY!,
+  },
+  region: "",
+  profile: {
+    httpProfile: { endpoint: "asr.tencentcloudapi.com" },
+  },
 });
+
+export const maxDuration = 30;
 
 export async function POST(req: Request) {
   const formData = await req.formData();
@@ -13,41 +23,23 @@ export async function POST(req: Request) {
     return Response.json({ error: "No audio file" }, { status: 400 });
   }
 
-  // Convert audio to base64 data URL
-  const arrayBuffer = await audioFile.arrayBuffer();
-  const base64 = Buffer.from(arrayBuffer).toString("base64");
-  const mimeType = audioFile.type || "audio/webm";
-  const dataUrl = `data:${mimeType};base64,${base64}`;
-
   try {
-    // Use Gemini Flash for audio transcription (works well in China)
-    const { text } = await generateText({
-      model: openrouter("google/gemini-2.0-flash-001"),
-      messages: [
-        {
-          role: "user",
-          content: [
-            {
-              type: "text",
-              text: "请将以下音频精确转写为中文文字。只输出转写的文字内容，不要添加任何其他说明。",
-            },
-            {
-              type: "file",
-              data: dataUrl,
-              mediaType: mimeType,
-            },
-          ],
-        },
-      ],
+    const arrayBuffer = await audioFile.arrayBuffer();
+    const base64 = Buffer.from(arrayBuffer).toString("base64");
+
+    const resp = await client.SentenceRecognition({
+      EngSerViceType: "16k_zh",
+      SourceType: 1,
+      VoiceFormat: "webm",
+      Data: base64,
+      DataLen: arrayBuffer.byteLength,
     });
 
-    return Response.json({ text: text.trim() });
+    const text = resp.Result?.trim() || "";
+    return Response.json({ text });
   } catch (error: unknown) {
-    console.error("Transcription error:", error);
-    const message = error instanceof Error ? error.message : String(error);
-    return Response.json(
-      { error: "转写失败", details: message },
-      { status: 500 },
-    );
+    const msg = error instanceof Error ? error.message : "转写失败";
+    console.error("Tencent ASR error:", msg);
+    return Response.json({ error: msg }, { status: 500 });
   }
 }
